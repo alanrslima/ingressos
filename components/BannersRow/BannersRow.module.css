@@ -1,0 +1,41 @@
+.movieRow {
+  margin-bottom: 30px;
+}
+
+.listArea {
+  overflow-x: hidden;
+  padding-left: 30px;
+}
+
+.rowIndicator {
+  position: absolute;
+  width: 40px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transition: all ease 0.4s;
+  color: white;
+}
+
+.rowIndicatorLeft {
+  left: 0;
+}
+
+.rowIndicatorRight {
+  right: 0;
+}
+
+.movieRow:hover .rowIndicatorLeft,
+.movieRow:hover .rowIndicatorRight {
+  opacity: 1;
+}
+
+.list {
+  transition: all ease 0.5s;
+}

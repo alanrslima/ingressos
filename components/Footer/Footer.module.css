@@ -1,0 +1,22 @@
+.topicsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.topic {
+  display: flex;
+  flex-direction: column;
+}
+
+.topic a {
+  color: blue;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.footer {
+  height: 500px;
+  background: #555;
+  padding: 2%;
+}
