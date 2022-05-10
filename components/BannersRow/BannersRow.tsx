@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import Banner from "../Banner/Banner";
 import styles from "./BannersRow.module.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { EventProps } from "../../types/event";
 
-const BannersRow: React.FC = () => {
-  const [scrollX, setScrollX] = useState(-400);
+interface BannersRowProps {
+  title: string;
+  events: EventProps[];
+}
+const BannersRow: React.FC<BannersRowProps> = ({ events, title }) => {
+  const [scrollX, setScrollX] = useState(0);
 
   function handleLeftArrow() {
     if (scrollX === 0) return;
@@ -17,18 +22,20 @@ const BannersRow: React.FC = () => {
 
   function handleRightArrow() {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = items.length * 400;
+    let listW = events.length * 300;
     if (window.innerWidth - listW > x) {
-      x = window.innerWidth - listW - 200;
+      x = window.innerWidth - listW - 60;
     }
     setScrollX(x);
   }
 
-  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  if (!events?.length) {
+    return null;
+  }
 
   return (
     <div className={styles.movieRow}>
-      <h2>Em cartaz</h2>
+      <h2>{title}</h2>
       <div
         className={`${styles.rowIndicator} ${styles.rowIndicatorLeft}`}
         onClick={handleLeftArrow}
@@ -46,10 +53,11 @@ const BannersRow: React.FC = () => {
           className={styles.list}
           style={{
             marginLeft: scrollX,
-            width: items.length * 300,
+            width: events?.length * 300,
           }}
         >
-          {items.length && items.map((item, index) => <Banner key={index} />)}
+          {events?.length &&
+            events.map((item, index) => <Banner event={item} key={index} />)}
         </div>
       </div>
     </div>

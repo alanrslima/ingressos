@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
       <div className={styles.topicsRow}>
         {topics.map((topic) => (
           <div key={topic.title} className={styles.topic}>
-            <span>{topic.title}</span>
+            <span className={styles.topicTitle}>{topic.title}</span>
             {topic.links.map((link) => (
               <a key={link.label} href="">
                 {link.label}
@@ -112,10 +112,12 @@ const Footer: React.FC = () => {
         ))}
       </div>
 
-      <span>
+      <p>
         Ingresso.com Ltds / CNPJ: 00.860.640/0001-71 Endereço: Rua da Quitanda,
-        86 - 9º andar - RJ - 20091-005
-      </span>
+        86 - 9º andar - RJ - 20091-005 <br />
+        Atendimento ao cliente 2019 - Copyright Ingresso.com - todos os direitos
+        reservados
+      </p>
     </footer>
   );
 };

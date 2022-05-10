@@ -2,6 +2,11 @@
   margin-bottom: 30px;
 }
 
+.movieRow h2 {
+  color: white;
+  padding: 0 2%;
+}
+
 .listArea {
   overflow-x: hidden;
   padding-left: 30px;
@@ -10,7 +15,7 @@
 .rowIndicator {
   position: absolute;
   width: 40px;
-  height: 400px;
+  height: 450px;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 99;
   display: flex;
@@ -21,6 +26,12 @@
   opacity: 0;
   transition: all ease 0.4s;
   color: white;
+}
+
+@media (max-width: 760px) {
+  .rowIndicator {
+    height: 300px;
+  }
 }
 
 .rowIndicatorLeft {
@@ -38,4 +49,11 @@
 
 .list {
   transition: all ease 0.5s;
+}
+
+@media (max-width: 760px) {
+  .rowIndicatorLeft,
+  .rowIndicatorRight {
+    opacity: 1;
+  }
 }

@@ -1,7 +1,8 @@
 .topicsRow {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 56px;
 }
 
 .topic {
@@ -10,13 +11,19 @@
 }
 
 .topic a {
-  color: blue;
-  font-size: 0.9rem;
+  color: #00a3d8;
+  font-size: 0.75rem;
   margin-top: 8px;
 }
 
+.topicTitle {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
 .footer {
-  height: 500px;
-  background: #555;
-  padding: 2%;
+  background: #202020;
+  padding: 2% 6%;
 }
