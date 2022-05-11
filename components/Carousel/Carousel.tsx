@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Banner from "../Banner/Banner";
-import styles from "./BannersRow.module.css";
+import styles from "./Carousel.module.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { EventProps } from "../../types/event";
+import { CarouselProps } from "../../types/carousel";
 
-interface BannersRowProps {
-  title: string;
-  events: EventProps[];
-}
-const BannersRow: React.FC<BannersRowProps> = ({ events, title }) => {
+const Carousel: React.FC<CarouselProps> = ({ events, name, carouselSlug }) => {
   const [scrollX, setScrollX] = useState(0);
 
   function handleLeftArrow() {
@@ -20,9 +16,13 @@ const BannersRow: React.FC<BannersRowProps> = ({ events, title }) => {
     setScrollX(x);
   }
 
+  function getListWidth() {
+    return events.length * 300;
+  }
+
   function handleRightArrow() {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = events.length * 300;
+    let listW = getListWidth();
     if (window.innerWidth - listW > x) {
       x = window.innerWidth - listW - 60;
     }
@@ -33,20 +33,24 @@ const BannersRow: React.FC<BannersRowProps> = ({ events, title }) => {
     return null;
   }
 
+  if (carouselSlug === "destaque") {
+    return <Banner full event={events[0]} />;
+  }
+
   return (
     <div className={styles.movieRow}>
-      <h2>{title}</h2>
+      <h2>{name}</h2>
       <div
         className={`${styles.rowIndicator} ${styles.rowIndicatorLeft}`}
         onClick={handleLeftArrow}
       >
-        <FiChevronLeft style={{ fontSize: 50 }} />
+        <FiChevronLeft style={{ fontSize: 40 }} />
       </div>
       <div
         className={`${styles.rowIndicator} ${styles.rowIndicatorRight}`}
         onClick={handleRightArrow}
       >
-        <FiChevronRight style={{ fontSize: 50 }} />
+        <FiChevronRight style={{ fontSize: 40 }} />
       </div>
       <div className={styles.listArea}>
         <div
@@ -64,4 +68,4 @@ const BannersRow: React.FC<BannersRowProps> = ({ events, title }) => {
   );
 };
 
-export default BannersRow;
+export default Carousel;

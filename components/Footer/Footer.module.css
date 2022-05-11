@@ -11,9 +11,14 @@
 }
 
 .topic a {
-  color: #00a3d8;
+  color: var(--color-primary);
   font-size: 0.75rem;
   margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+.topic a:hover {
+  opacity: 0.7;
 }
 
 .topicTitle {
@@ -26,4 +31,14 @@
 .footer {
   background: #202020;
   padding: 2% 6%;
+}
+
+.footer p {
+  color: var(--color-light-gray);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.footer p a {
+  color: var(--color-primary);
 }

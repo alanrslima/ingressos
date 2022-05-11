@@ -69,10 +69,6 @@ const Footer: React.FC = () => {
           href: "",
         },
         {
-          label: "Leis Estaduais e Municipais",
-          href: "",
-        },
-        {
           label: "Termos de Uso",
           href: "",
         },
@@ -99,12 +95,17 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
+      <div className={styles.footerTop}>
+        <div>
+          <span>Baixe nosso APP</span>
+        </div>
+      </div>
       <div className={styles.topicsRow}>
-        {topics.map((topic) => (
-          <div key={topic.title} className={styles.topic}>
+        {topics.map((topic, index) => (
+          <div key={index} className={styles.topic}>
             <span className={styles.topicTitle}>{topic.title}</span>
-            {topic.links.map((link) => (
-              <a key={link.label} href="">
+            {topic.links.map((link, i) => (
+              <a key={i} href="">
                 {link.label}
               </a>
             ))}
@@ -115,8 +116,8 @@ const Footer: React.FC = () => {
       <p>
         Ingresso.com Ltds / CNPJ: 00.860.640/0001-71 Endereço: Rua da Quitanda,
         86 - 9º andar - RJ - 20091-005 <br />
-        Atendimento ao cliente 2019 - Copyright Ingresso.com - todos os direitos
-        reservados
+        <a href="">Atendimento ao cliente</a> © 2019 - Copyright Ingresso.com -
+        todos os direitos reservados
       </p>
     </footer>
   );

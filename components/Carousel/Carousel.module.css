@@ -3,7 +3,7 @@
 }
 
 .movieRow h2 {
-  color: white;
+  color: var(--color-white);
   padding: 0 2%;
 }
 
@@ -14,9 +14,8 @@
 
 .rowIndicator {
   position: absolute;
-  width: 40px;
+  width: 50px;
   height: 450px;
-  background-color: rgba(0, 0, 0, 0.6);
   z-index: 99;
   display: flex;
   align-items: center;
@@ -25,7 +24,7 @@
   cursor: pointer;
   opacity: 0;
   transition: all ease 0.4s;
-  color: white;
+  color: var(--color-white);
 }
 
 @media (max-width: 760px) {
@@ -36,10 +35,12 @@
 
 .rowIndicatorLeft {
   left: 0;
+  background-image: linear-gradient(to left, transparent, var(--color-black));
 }
 
 .rowIndicatorRight {
   right: 0;
+  background-image: linear-gradient(to right, transparent, var(--color-black));
 }
 
 .movieRow:hover .rowIndicatorLeft,

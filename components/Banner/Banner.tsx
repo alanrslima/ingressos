@@ -8,33 +8,49 @@ interface BannerProps {
   event?: EventProps;
 }
 export default function Banner({ full, event }: BannerProps) {
-  const imageUrl = event?.images?.find(
-    (image) => image.type === "PosterPortrait"
-  )?.url;
+  function getImage() {
+    const placeholder = "/images/placeholder.jpeg";
+    const imageType = full ? "PosterHorizontal" : "PosterPortrait";
+    const imageUrl = event?.images?.find(
+      (image) => image.type === imageType
+    )?.url;
+    return imageUrl || placeholder;
+  }
+
+  const imageUrl = getImage();
+
+  function onClickBanner() {
+    if (event?.trailers.length) {
+      window.open(event?.trailers[0].url, "_blank");
+    }
+  }
 
   return (
     <div
+      onClick={onClickBanner}
       className={`${styles.bannerContainer} ${
         full && styles.bannerContainerFull
       }`}
     >
       <div className={styles.wrapperDetails}>
-        <span className={styles.flag}>Família</span>
-        <span className={styles.flag}>Família</span>
+        <div className={styles.wrapperFlags}>
+          {event?.genres.map((genre) => (
+            <span key={genre} className={styles.flag}>
+              {genre}
+            </span>
+          ))}
+        </div>
+
         <h3>{event?.title}</h3>
-        {/* <span className={styles.flag}>Família</span>
-        <span className={styles.flag}>Família</span> */}
       </div>
 
       {imageUrl ? (
         <Image
           src={imageUrl}
-          // src="https://cdn.ome.lt/iOR1Q6WR4Yvi-O_E9p0n3Tr9XLo=/1200x630/smart/extras/conteudos/Malevola_3ufWsEJ.jpg"
-          alt="Vercel Logo"
-          // width={300}
-          // height={400}
+          alt={event?.title}
           layout="fill"
           objectFit="cover"
+          onError={() => console.log("Erro loading")}
         />
       ) : null}
     </div>

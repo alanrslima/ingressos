@@ -25,15 +25,17 @@
 }
 
 .flag {
-  background: orange;
+  background-color: var(--color-secundary);
   padding: 4px 8px;
   margin-right: 6px;
   font-size: 0.7rem;
   text-transform: uppercase;
+  color: white;
+  margin-top: 4px;
 }
 
 .bannerContainer h3 {
-  color: white;
+  color: var(--color-white);
 }
 
 .wrapperDetails {
@@ -41,7 +43,12 @@
   bottom: 0px;
   z-index: 1;
   padding: 2% 4%;
-  /* height: 100%; */
   width: 100%;
-  background-image: linear-gradient(transparent, black);
+  background-image: linear-gradient(transparent, var(--color-black));
+}
+
+.wrapperFlags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
