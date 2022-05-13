@@ -27,7 +27,6 @@ const Home: NextPage<HomeProps> = ({ carousel }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const uri = 'https://api-content.ingresso.com/v0/templates/highlights/1/partnership/home'
   const uri = "https://api-content.ingresso.com/v0/carousel/1/partnership/home";
   const response = await fetch(uri);
   const data = await response.json();

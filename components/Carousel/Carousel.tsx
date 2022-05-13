@@ -6,6 +6,7 @@ import { CarouselProps } from "../../types/carousel";
 
 const Carousel: React.FC<CarouselProps> = ({ events, name, carouselSlug }) => {
   const [scrollX, setScrollX] = useState(0);
+  const bannersRefs = useRef<HTMLDivElement[]>([]);
 
   function handleLeftArrow() {
     if (scrollX === 0) return;
@@ -17,7 +18,8 @@ const Carousel: React.FC<CarouselProps> = ({ events, name, carouselSlug }) => {
   }
 
   function getListWidth() {
-    return events.length * 300;
+    const bannerWidth = bannersRefs.current[0].clientWidth;
+    return events.length * bannerWidth;
   }
 
   function handleRightArrow() {
@@ -61,7 +63,15 @@ const Carousel: React.FC<CarouselProps> = ({ events, name, carouselSlug }) => {
           }}
         >
           {events?.length &&
-            events.map((item, index) => <Banner event={item} key={index} />)}
+            events.map((item, index) => (
+              <Banner
+                ref={(el) => {
+                  el ? (bannersRefs.current[index] = el) : null;
+                }}
+                event={item}
+                key={index}
+              />
+            ))}
         </div>
       </div>
     </div>
